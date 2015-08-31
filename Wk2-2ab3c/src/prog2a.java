@@ -21,9 +21,9 @@ public class prog2a
     }
 }
 /*
-The program youare using is called Java.
+The program you are using is called Java.
 It will soon be your friend.
 Oops!
-A mistake has justbeen made. 
-Pleasecorrect me.
+A mistake has just been made. 
+Please correct me.
 */
