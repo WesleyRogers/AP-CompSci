@@ -12,7 +12,7 @@ public class prog2a
     public static void main (String[] args)
     {
         System.out.print("The program you ");
-        System.out.print("are using is "); //Wow new line character is very badly needed here.
+        System.out.print("are using is "); //I changed println to print because we're not programming in whitespace
         System.out.print("called Java.\nIt ");
         System.out.println("will soon be your friend."); //Hey I can skip a newline character at the end here!
         System.out.print("Oops!\nA mistake has just ");
