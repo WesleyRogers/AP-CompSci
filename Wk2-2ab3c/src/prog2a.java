@@ -14,7 +14,7 @@ public class prog2a
         System.out.print("The program you ");
         System.out.print("are using is "); //Wow new line character is very badly needed here.
         System.out.print("called Java.\nIt ");
-        System.out.print("will soon be your friend.\n");
+        System.out.println("will soon be your friend."); //Hey I can skip a newline character at the end here!
         System.out.print("Oops!\nA mistake has just ");
         System.out.print("been made. \nPlease ");
         System.out.print("correct me.");
