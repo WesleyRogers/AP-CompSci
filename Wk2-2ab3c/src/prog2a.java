@@ -11,6 +11,7 @@ public class prog2a
 {
     public static void main (String[] args)
     {
+
         System.out.print("The program you ");
         System.out.print("are using is "); //I changed println to print because we're not programming in whitespace
         System.out.print("called Java.\nIt ");
@@ -18,6 +19,7 @@ public class prog2a
         System.out.print("Oops!\nA mistake has just ");
         System.out.print("been made. \nPlease ");
         System.out.print("correct me.");
+
     }
 }
 /*
