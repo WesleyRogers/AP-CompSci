@@ -1,14 +1,13 @@
 /*
-    \              /\              /    |\
-     \            /  \            /     | \
-      \          /    \          /      |  |
-       \        /      \        /       | /
-        \      /        \      /        |/
-         \    /          \    /         |\
-          \  /            \  /          | \
-           \/              \/           |  \
-
+    Wesley Rogers
+    Franklinton High School
+    Program 54a Miles Per Gallon
+    
     Figures out the MPG of several hard coded cars.
+    
+    Integer division threw me off... again. I also mixed up a few variables due to slightly similar namings.
+    
+    I learned that I really need to remember that integer division is a thing, and that I need to type better.
 */
 
 public class Prog54a_MPG {
