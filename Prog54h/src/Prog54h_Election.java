@@ -7,7 +7,7 @@
 
     I didn't really have any issues.
 
-    
+    I learned that algebra on a computer can be hard.
 */
 public class Prog54h_Election {
 
