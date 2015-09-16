@@ -1,15 +1,15 @@
 /*
     Program 52d Batter Up
     Wesley Rogers 
-    DATE
+    9/16/15
     Java 1.8u25, using Eclipse Mars
     Windows 7
 
-    DESCRIPTION
+    Gives the batting average and one base percentage of a certain player.
 
-    What I learned: 
+    What I learned: The scanner class is pretty normal.
     
-    Difficulties:
+    Difficulties: I misread the formula for batting average and was getting some weird answers, aside from that nothing.
 */
 import java.util.*;
 
@@ -44,7 +44,7 @@ public class BatterUp {
         System.out.println("Player's On Base percentage: "+ round(onBase,4));
         
     }
-    static double round(double num, int decimal) { //Java y u no haz rounding to a decimal
+    private static double round(double num, int decimal) { //Java y u no haz rounding to a decimal
         double out = Math.round(num * Math.pow(10, decimal))/Math.pow(10,decimal);
         
         return out;

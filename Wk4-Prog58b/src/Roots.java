@@ -1,7 +1,7 @@
 /*
     Program 58b Roots
     Wesley Rogers 
-    DATE
+    9/16/15
     Java 1.8u25, using Eclipse Mars
     Windows 7
 
