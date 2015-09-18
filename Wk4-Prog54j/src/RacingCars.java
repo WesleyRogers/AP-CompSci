@@ -1,7 +1,7 @@
 /*
     Program 54j Racing Cars
     Wesley Rogers 
-    DATE
+    9/18/2015
     Java 1.8u25, using Eclipse Mars
     Windows 7
 

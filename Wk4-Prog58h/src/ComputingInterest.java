@@ -1,7 +1,7 @@
 /*
-    PROGRAM NAME
+    Program 58h Computing Interest
     Wesley Rogers 
-    DATE
+    9/18/15
     Java 1.8u25, using Eclipse Mars
     Windows 7
 
@@ -9,7 +9,7 @@
 
     What I learned: I cannot read. 
     
-    Difficulties:
+    Difficulties: Nothing really. 
 */
 import java.util.*;
 
