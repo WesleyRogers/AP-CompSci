@@ -1,5 +1,5 @@
 /*
-    PROGRAM NAME
+    Program 58i Monthly Payment
     Wesley Rogers 
     9/18/2015
     Java 1.8u25, using Eclipse Mars
