@@ -9,7 +9,7 @@
 
     What I learned: ASCII Capital letters start at 65
     
-    Difficulties:
+    Difficulties: Nothing really.
 */
 
 import java.util.Scanner;
@@ -28,7 +28,7 @@ public class IdentityTheft {
         String ccNumber = numOne + " " +numTwo + " " +numThree + " " +numFour + " "; //I chose this over just getting the entire line because you could enter numbers on more than one line.
         
         //The actual letter part. This was suprisingly simple.
-        int letterNum = Math.floorMod((numOne+numTwo+numThree+numFour), 26)+65;//Getting the letter, 65 is so that the numbers star at A
+        int letterNum = ((numOne+numTwo+numThree+numFour)% 26)+65;//Getting the letter, 65 is so that the numbers star at A
         char letter = (char) letterNum; // Turning the number into a letter
         System.out.println("The correct number and code is "+ccNumber+letter);
     }
