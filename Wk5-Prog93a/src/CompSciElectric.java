@@ -24,9 +24,10 @@ public class CompSciElectric {
         // TODO Auto-generated method stub
         Scanner input = new Scanner(System.in);
         
-        System.out.print("Enter the number of Kilowatt-hours used: ");
+        System.out.print("Enter the number of kilowatt-hours used: ");
         double kwhUsed = input.nextInt();
         
+        //Variable declarations
         double baseCharge = round((kwhUsed * kwhPrice),2);
         double cityTax = round((baseCharge * taxRate),2);
         double surchargeCost = round((surcharge * baseCharge),2);
@@ -35,7 +36,7 @@ public class CompSciElectric {
         
         System.out.println("C O M P S C I Electric");
         System.out.println("----------------------------------");
-        System.out.println("You used "+ kwhUsed + " kilowatt-Hours.");
+        System.out.println("You used "+ kwhUsed + " kilowatt-hours.");
         System.out.println("----------------------------------");
         System.out.println("Base Charge:         $" + round(baseCharge,2));
         System.out.println("Surcharge:           $" + round(surchargeCost,2));
@@ -51,10 +52,10 @@ public class CompSciElectric {
 }
 /* Sample Output
 
-Enter the number of Kilowatt-hours used: 993
+Enter the number of kilowatt-hours used: 993
 C O M P S C I Electric
 ----------------------------------
-You used 993 kilowatt-Hours.
+You used 993.0 kilowatt-hours.
 ----------------------------------
 Base Charge:         $47.17
 Surcharge:           $4.72

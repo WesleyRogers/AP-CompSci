@@ -47,3 +47,34 @@ public class MonthlyPayment {
         return rounded;
     }
 }
+/* Sample Output
+How much do you wish to borrow?
+7500
+What is the rate on your loan?
+14.5
+How long will it take you to pay off the loan in years?
+3
+You will pay $258.16 as a monthly payment.
+You will pay $1793.66 as interest.
+You will pay $9293.66 in total
+
+How much do you wish to borrow?
+7500
+What is the rate on your loan?
+14.5
+How long will it take you to pay off the loan in years?
+4
+You will pay $206.83 as a monthly payment.
+You will pay $2428.06 as interest.
+You will pay $9928.06 in total.
+
+How much do you wish to borrow?
+7500
+What is the rate on your loan?
+7.5
+How long will it take you to pay off the loan in years?
+3
+You will pay $233.3 as a monthly payment.
+You will pay $898.68 as interest.
+You will pay $8398.68 in total.
+*/
