@@ -27,7 +27,7 @@ public class NumberManipulation {
         System.out.println("         * 12345679 \n __________");
         System.out.println("Suprise! " + (9l*12345679*disliked));
         System.out.println("         * 1000 \n __________");
-        System.out.println("\"No suprise\"? "+(9l*1000*12345679*disliked)); // This line threw me off as it can get larger than 2^32
+        System.out.println("\"No suprise\"? "+(9*1000*12345679*disliked)); // This line threw me off as it can get larger than 2^32
     }
 
 }
