@@ -9,7 +9,7 @@
 
     What I learned: Not much, but I had forgotten how short loops can make stuff. 
     
-    Difficulties: Nothing! The entire program compiled correctly the first time, formatting and all.
+    Difficulties: Nothing. The entire program compiled correctly the first time, formatting and all!
 */
 public class PayAtHour {
 
@@ -20,6 +20,8 @@ public class PayAtHour {
         //While i is less than or equal to 40;
         for(int i=1; i<=40; i++){
             int pay = 4*i; // since there is no cents, multiplying by 4 as an int is ok, and int*int always results in an int.
+            
+            //These are strings because formatting.
             String sHours = ""+i;
             String sPay = ""+pay;
             

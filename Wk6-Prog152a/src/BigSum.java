@@ -1,7 +1,7 @@
 /*
-    PROGRAM NAME
+    Progrma 152a Big Sum
     Wesley Rogers 
-    DATE
+    9/25/15
     Java 1.8u25, using Eclipse Mars
     Windows 7
 

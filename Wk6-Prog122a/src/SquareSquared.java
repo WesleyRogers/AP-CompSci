@@ -16,7 +16,8 @@ public class SquareSquared {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         System.out.println("Number  Squared Square Root");
-        for(int i=1; i<41; i++){
+        for(int i=1; i<41; i++){ // As long as i is less than 41
+            //These get turned into a string so that formatting can be applied
             String justI = ""+i; //Turning i into a string
             String iSquared = ""+Math.pow(i, 2); // If this was a math course this would be -1
             String rootI = ""+Math.sqrt(i); //square rooting i

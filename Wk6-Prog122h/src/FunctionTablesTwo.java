@@ -1,4 +1,16 @@
+/*
+    Program 122h Function Tables
+    Wesley Rogers 
+    9/28/2015
+    Java 1.8u25, using Eclipse Mars
+    Windows 7
 
+    Gives you the value of the functions x^2, sqrt(x), x^3, x^0.25 for the first 20 natural numbers.
+
+    What I learned: Rounding is important.
+    
+    Difficulties: Nothing really, formatting took a second to alter the code but that was it.
+*/
 public class FunctionTablesTwo {
 
     public static void main(String[] args) {
