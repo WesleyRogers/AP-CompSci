@@ -1,6 +1,4 @@
-/*
-    THIS IS A PLACE TO STORE METHODS AND SOME OTHER STUFF. IGNORE.
-*/
+/* THIS IS A PLACE TO STORE METHODS AND SOME OTHER STUFF. IGNORE. */
 
 /*
     PROGRAM NAME
@@ -28,7 +26,6 @@ public class Method_Repo {
         return rounded;
     }
     
-    //I need to redo this.
     /**
      * Formats the String string to have a length of size.
      * @param string        The string to be formatted
