@@ -17,7 +17,7 @@ public class DecimalEquivalents {
         // TODO Auto-generated method stub
         for (int i = 2; i < 15; i++){ //i is the denominator
             for(int k = 1; k < i; k++){ //k is the numerator
-                System.out.print(limitStringSize(k + "/" + i , 10, false));
+                System.out.print(limitStringSize(k + "/" + i , 10, false)); //Print the fraction
                 System.out.println(roundWithZeroes( ((double)k / i), 5) ); //Divide k by i as a double, then round to 5 places.
             }
         }
