@@ -27,7 +27,7 @@ public class TripleSequence {
         System.out.println("\n\nWhile Loop");
         number = 100;
         
-        while (number >= 1){
+        while (number >= 1){ //odd decreases by two to maintain oddity and it goes backwards
             System.out.print((number)+" ");
             number -=odd;
             odd -=2;
@@ -36,7 +36,7 @@ public class TripleSequence {
         System.out.println("\n\nDo...While Loop");
         number = 1;
         odd = 3;
-        do{
+        do{ // odd goes up again
             System.out.print(number + " ");
             number += odd;
             odd+=2;
