@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /* THIS IS A PLACE TO STORE METHODS AND SOME OTHER STUFF. IGNORE. */
 
 /*
@@ -54,5 +56,39 @@ public class Method_Repo {
         double rounded = Math.round(num * Math.pow(10, places))/Math.pow(10, places); //Round the number
         String output = String.format(("%."+ places + "f") , rounded); //Format the number to places places
         return output;
+    }
+    
+    /**
+     * Takes array a1 and array a2 and merges them together into array a3
+     * @param a1  The first Array
+     * @param a2  The second Array
+     * @return    The sorted and merged array.
+     */
+    public static int[] mergeArrays(int[] a1, int[] a2){
+        int arrayLength = a1.length + a2.length;
+        int[] a3 = new int[arrayLength - 1];
+        
+        //I probably could have done this without an if thinking back.
+        if (a1.length > a2.length){ //If the first array is larger than the second.
+            
+            for(int i=0; i < a1.length; i++){ //a3 = a1 takes its member limit with it, sadly.
+                a3[i] = a1[i]; //Take the first array and set its members to a1
+            }
+            for(int i = a1.length; i < arrayLength - 1; i++){ 
+                a3[i] = a2[(i - a1.length)]; //Append a2 to the end
+            }
+        } else {
+            for(int i=0; i < a2.length; i++){ 
+                a3[i] = a2[i]; //Take a2's members and put them in a3
+            }
+            for(int i = a2.length; i < arrayLength - 1; i++){
+                a3[i] = a1[(i - a2.length)]; //Append a1 to the end
+            }
+        }
+        
+        //Sort, then return.
+        Arrays.sort(a3);
+        return a3;
+        
     }
 }
