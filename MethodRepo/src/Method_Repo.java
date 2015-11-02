@@ -91,4 +91,19 @@ public class Method_Repo {
         return a3;
         
     }
+    
+    /**
+     * Averages an array of integers.
+     * @param array  The array to be averaged.
+     * @return       The average of the array.
+     */
+    public static double averageArray(int[] array){
+        int sum = 0;
+        for (int num : array){
+            sum += num;
+        }
+        int avg = sum / array.length;
+        return avg;
+        
+    }
 }
