@@ -1,3 +1,16 @@
+/*
+    Program 210c Higher or Lower?
+    Wesley Rogers 
+    11/3/15
+    Java 1.8u25, using Eclipse Mars
+    Windows 7
+
+    Generates a random number, then you have to guess what the number is using clues the program gives you.
+
+    What I learned: Now much, pretty standard program. I did remember you can use a class without assigning it a variable name though.
+    
+    Difficulties: None.
+*/
 import java.util.Random;
 import java.util.Scanner;
 
