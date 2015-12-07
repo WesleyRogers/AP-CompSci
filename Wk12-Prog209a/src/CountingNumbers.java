@@ -31,11 +31,11 @@ public class CountingNumbers {
         int numOver = 0;
         int totalNum = 0;
         while (input.hasNextInt()){
-            if (input.nextInt() < 500){
+            if (input.nextInt() < 500)
                 numUnder++;
-            } else {
+             else 
                 numOver++;
-            }
+            
             totalNum++;
         }
         System.out.println("Total number of numbers: " + totalNum);
