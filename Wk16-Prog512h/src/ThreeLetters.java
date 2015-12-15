@@ -40,3 +40,6 @@ public class ThreeLetters {
     }
 
 }
+/*
+Three letter words comprised 21.50537634408602% of all words.
+*/

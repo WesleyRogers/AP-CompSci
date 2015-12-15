@@ -106,4 +106,22 @@ public class Method_Repo {
         return avg;
         
     }
+    
+    /**
+     * Determines whether or not a variable should be set to true using standard input. "y", "yes", or "true" all return true.
+     * @param s    The string to check.
+     * @return     Boolean to whether or not something should continue.
+     */
+    public static boolean shouldContinue(String s){
+        boolean output; //So it doesn't do funny stuff
+        if (s.equals("y") || s.toLowerCase().equals("yes") || s.equals("true")){ //String's equals method checks to see if to strings have the same characters.
+            output = true; //if input is y, yes or true, continue.
+        } else {
+            output = false; //stop if not.
+        }
+        
+        return output;
+    }
+    
+    
 }
