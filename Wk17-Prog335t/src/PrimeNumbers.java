@@ -80,3 +80,25 @@ public class PrimeNumbers {
         return out;
     }
 }
+/*
+Enter an integer greater than 2 to see if it is prime. 14
+The closest prime below 14 is 13
+The closest prime above 14 is 17
+
+Would you like to try another number? y
+Enter an integer greater than 2 to see if it is prime. 37
+The closest prime below 37 is 37
+The closest prime above 37 is 37
+
+Would you like to try another number? yes
+Enter an integer greater than 2 to see if it is prime. 2147483647
+The closest prime below 2147483647 is 2147483647
+The closest prime above 2147483647 is 2147483647
+
+Would you like to try another number? true
+Enter an integer greater than 2 to see if it is prime. 100
+The closest prime below 100 is 97
+The closest prime above 100 is 101
+
+Would you like to try another number? no
+*/
