@@ -1,7 +1,12 @@
 package us.magicalash.apcs.wk22;
 
-public class Mathey { //Most of this is ported from my calculator.
-    private Mathey(){} //This is an aditional library, not a class. No instantiating!
+/**
+ * A small library for some simple math calculations.
+ * @author Wesley Rogers
+ *
+ */
+public class Mathey { //Most of this is ported from my calculator or older programs.
+    private Mathey(){} //This is an aditional library, not a class. No instantiating! If I remember right, the actual Math class does this. Cool!
     
     /**
      * Gives the factorial of @param num. Equivalent to (num!) in mathematics terms.
@@ -30,6 +35,8 @@ public class Mathey { //Most of this is ported from my calculator.
     public static double quadraticPlus(double a, double b, double c){
         double discriminant = Math.pow(b, 2) - 4*a*c;
         
+        if (discriminant<0){return Double.NaN;}
+        
         return (-b + Math.sqrt(discriminant))/(2*a);
     }
     
@@ -42,6 +49,9 @@ public class Mathey { //Most of this is ported from my calculator.
      */
     public static double quadraticPlus(int a, int b, int c){
         double discriminant = Math.pow(b, 2) - 4*a*c;
+        
+        if (discriminant<0){return Double.NaN;}
+        
         return (-b + Math.sqrt(discriminant))/(2*a);
     }
     
@@ -54,6 +64,9 @@ public class Mathey { //Most of this is ported from my calculator.
      */
     public static double quadraticMinus(double a, double b, double c){
         double discriminant = Math.pow(b, 2) - 4*a*c;
+        
+        if (discriminant<0){return Double.NaN;}
+        
         return (-b - Math.sqrt(discriminant))/(2*a);
     }
     
@@ -66,6 +79,9 @@ public class Mathey { //Most of this is ported from my calculator.
      */
     public static double quadraticMinus(int a, int b, int c){
         double discriminant = Math.pow(b, 2) - 4*a*c;
+        
+        if (discriminant<0){return Double.NaN;}
+        
         return (-b - Math.sqrt(discriminant))/(2*a);
     }
     
@@ -96,7 +112,7 @@ public class Mathey { //Most of this is ported from my calculator.
      * @return     the digit in the position provided.
      */
     public static int getDigitFromPos(int num, int pos){ //This is in no way the best way to write this, but it works.
-        if (num < 0){ //I did not foresee this being a problem. Huh.
+        if (Math.signum(num) == -1.0){ //I did not foresee this being a problem. Huh.
             return getDigitFromPos(Math.abs(num), pos);
         }
         
@@ -130,14 +146,14 @@ public class Mathey { //Most of this is ported from my calculator.
      * @return     whether or not the number is prime.
      */
     public static boolean isPrime(long num){ //This is extremely inefficient. Good lordy.
-        if(num % 2 == 0 && num != 2){ //If num is a multiple of 2, go away.
-            return false;
-        }
-        
         if (num == 2){
             return true;
         }
         
+        if(num % 2 == 0){ //If num is a multiple of 2, go away.
+            return false;
+        }
+
         for(int i = 3; i < num; i+=2){ //Check every other number less than num to see if it is a divisor, because we already got rid of even numbers.
             if ((num+0.0)/i == Math.floor((num+0.0)/i)){
                 return false;

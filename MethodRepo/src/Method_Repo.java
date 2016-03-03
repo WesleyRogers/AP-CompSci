@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /* THIS IS A PLACE TO STORE METHODS AND SOME OTHER STUFF. IGNORE. */
@@ -102,7 +103,7 @@ public class Method_Repo {
         for (int num : array){
             sum += num;
         }
-        int avg = sum / array.length;
+        double avg = sum / ((double) array.length);
         return avg;
         
     }
@@ -123,5 +124,164 @@ public class Method_Repo {
         return output;
     }
     
+    /**
+     * A version of quicksort modified to keep two arrays' members paired.
+     * @param sort  The array to be sorted.
+     * @param ids   The array to be paired.
+     * @param start Where to start.
+     * @param end   Where to end.
+     */
+    public static void sortInPairs(int[] sort, int[] ids, int start, int end){
+        int low = start;
+        int high = end;
+        
+        //This is the pivot, I use the middle of the array, although I've heard the last element in an array is also common.
+        int mid = sort[((low+high)/2)];
+
+        while (low <= high) {
+            //If sort's element low index is below the pivot, move it there.
+            while (sort[low] < mid) {
+                low++;
+            }
+            //If sort's element high is above the pivot, move it there.
+            while (sort[high] > mid) {
+                high--;
+            }
+            
+            //Swap elements that need to be on the other side of the pivot.
+            if (low <= high) {
+                swapArrayElements(sort, low, high);
+                swapArrayElements(ids, low, high);
+                low++;
+                high--;
+            }
+        }
+        
+        //Sort the bottom half of the array recursively.
+        if (start < high){
+            sortInPairs(sort, ids, start, high);
+        }
+        //Sort the top half of the array recursively.
+        if (low < end){
+            sortInPairs(sort, ids, low, end);
+        }
+    }
     
+    /**
+     * Swaps two members of an array.
+     * @param array The Array to have members swaped.
+     * @param i     An index being swapped.
+     * @param k     An index being swapped.
+     */
+    public static void swapArrayElements(int[] array, int i, int k){
+        int temp = array[i];
+        array[i] = array[k];
+        array[k] = temp;
+    }
+    
+    /**
+     * Determines if an element is already within an array
+     * @param array The array to be searched.
+     * @param e     Teh element to be looked for.
+     * @return      True if the element is found, false otherwise.
+     */
+    public static boolean isMemberInArray(int[] array, int e){
+        for(int i = 0; i<array.length-1; i++){
+            if (array[i] == e){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Gets all of the prime numbers under max
+     * @param max The maximum number to return.
+     * @return An array of prime numbers under max.
+     */
+    public static Integer[] seive(int max){
+        ArrayList<Integer> out = new ArrayList<Integer>();
+        boolean[] primes = new boolean[max+1]; //For simplicities sake I'm ignoring the first and second indices.
+        
+        for(int i = 2; i*i<=max; i+=0){ //Don't increase i automagically, it must be done manually
+            for(int k = 0; (i*(k+i)) <= max; k++){
+                primes[i*(k+i)] = true; //Mark i^2 + k*i out because it's composite.
+            }
+            
+            //Now to find the next i.
+            boolean notFoundI = true;
+            for(int l = i + 1; notFoundI; l++){
+                if(!primes[l]){
+                    i = l;
+                    notFoundI=false;
+                }
+            }
+            
+        }
+        
+        //Add every instance of 'false' to the arraylist, as 'false''s are prime.
+        for(int i=2; i<primes.length; i++){
+            if(!primes[i]){
+                out.add(new Integer(i));
+            }
+        }
+        return out.toArray(new Integer[out.size()]);
+    }
+    
+    /**
+     * Determines where a number appears in an array.
+     * @param array
+     * @param e
+     * @return
+     */
+    public static int whereMemberInArray(int[] array, int e){
+        for(int i = 0; i<array.length-1; i++){
+            if (array[i] == e){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    /**
+     * Formats strings provided to all fit to a length, then are appended together.
+     * @param size          The length to force all strings to.
+     * @param isRightPadded Right padded?
+     * @param string        The string(s) to be formatted.
+     * @return              All string(s) formatted.
+     */
+    public static String lss(int size, boolean isRightPadded, String... string){
+        String finalString = "";
+        for(int i = 0; i < string.length; i++){
+            String stringOut = string[i];
+            if (isRightPadded == true) {
+                stringOut = String.format(("%1$" + size + "s"), string[i]); //Pad it on the right if its short
+            } else {
+                stringOut = String.format(("%1$-" + size + "s"), string[i]); //Pad it on the left if its short
+            }
+            stringOut = stringOut.substring(0, size);//Cut it short if its long.
+            finalString += stringOut;
+        }
+        return finalString; //Returns the formatted string.
+    }
+    
+    /**
+     * Averages an array, ignoring zero elements.
+     * @param array The array to average.
+     * @return      The average of the array.
+     */
+    public static double averageArrayExcludeZero(int[] array){
+        int ignoredElements = 0;
+        int sum = 0;
+        for (int num : array){
+            if (num == 0){
+                ignoredElements++;
+            } else {
+                sum += num;
+            }
+        }
+        double avg = sum / ((double) array.length - ignoredElements);
+        return avg;
+        
+    }
 }
