@@ -284,4 +284,52 @@ public class Method_Repo {
         return avg;
         
     }
+    
+    /**
+     * Creates an int[] array out of the ArrayList integers
+     * @param integers The arraylist<Integer> to be converted to an int[] array.
+     * @return         An array of int[]s created from integers.
+     */
+    public static int[] toIntArray(ArrayList<Integer> integers){
+        int[] out = new int[integers.size()];
+        for(int i = 0; i < out.length; i++){
+            out[i] = integers.get(i);
+        }
+        
+        return out;
+    }
+    
+    /**
+     * Prints an array out as a box.
+     * @param list          The array to be printed.
+     * @param width         How many elements wide the array should be.
+     * @param elementLength 
+     */
+    public static void printArrayAsBox(int[] list, int width, int elementLength){
+        for (int i=0; i < list.length; i++){
+            //Print an integer, then add some spaces so its a string with length 4
+            System.out.print(lss(elementLength, true, list[i]+""));
+            
+            if (i%width==width-1){ //If the number is a multiple of width, newline
+                System.out.print("\n");
+            }
+        }
+    }
+    
+    /**
+     * Sorts an array list using bubble sort.
+     * @param list The array to be sorted.
+     */
+    public static void bubbleSort(int[] list){
+        boolean hasSwapped = true; //So it runs at least once.
+        while(hasSwapped){
+            hasSwapped = false;
+            for(int i = 1; i < list.length; i++){
+                if(list[i] < list[i-1]){
+                    swapArrayElements(list, i, i-1);
+                    hasSwapped = true;
+                }
+            }
+        }
+    }
 }
