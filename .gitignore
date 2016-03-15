@@ -11,6 +11,14 @@ local.properties
 .settings/
 .loadpath
 .recommenders/
+*.DS_Store
+*.db
+*.jpg
+*.htm
+*.html
+*.css
+*.gif
+
 # Eclipse Core
 .project
 
