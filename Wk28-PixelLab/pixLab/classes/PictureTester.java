@@ -59,11 +59,11 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    testKeepOnlyBlue();
+    //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
-    testNegate(); //This one looks really creepy. o_o
-    testGrayscale();
+    //testNegate(); //This one looks really creepy. o_o
+    //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
@@ -80,6 +80,11 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+    testMirrorVerticalRightToLeft();
+    testMirrorHorizontal();
+    testMirrorHorizontalBottomToTop();
+    //testMyCollage();
+    //testSuperEdgeDetection();
   }
 
   public static void testKeepOnlyBlue() {
@@ -99,5 +104,45 @@ public class PictureTester
       Picture splat = new Picture("splatoon.jpg");
       splat.grayscale();
       splat.explore();
+  }
+  
+  public static void testMirrorVerticalRightToLeft(){
+      Picture splat = new Picture("splatoon.jpg");
+      splat.mirrorVerticalRightToLeft();
+      splat.explore();
+  }
+  
+  public static void testMirrorHorizontal(){
+      Picture splat = new Picture("splatoon.jpg");
+      splat.mirrorHorizontal();
+      splat.explore();
+  }
+  
+  public static void testMirrorHorizontalBottomToTop(){
+      Picture splat = new Picture("splatoon.jpg");
+      splat.mirrorHorizontalBottomToTop();
+      splat.explore();
+  }
+  
+  public static void testCopy2(){
+      Picture splat = new Picture("splatoon.jpg");
+      Picture swan = new Picture("beach.jpg");
+      
+      splat.copy(swan, 0, 0, 300, 300);
+      splat.explore();
+  }
+  
+  public static void testMyCollage(){
+      Picture splat = new Picture("splatoon.jpg");
+      splat.myCollage();
+      splat.explore();
+  }
+  
+  public static void testSuperEdgeDetection(){
+      Picture splat = new Picture("splatoon.jpg");
+      Picture splat2 = new Picture("splatoon.jpg");
+      splat.superEdgeDetection(10);
+      splat.explore();
+
   }
 }

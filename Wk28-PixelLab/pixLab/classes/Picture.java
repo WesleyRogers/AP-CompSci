@@ -224,11 +224,12 @@ public class Picture extends SimplePicture
   public static void main(String[] args) 
   {
     Picture beach = new Picture("beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
+    
   }
   
+  /**
+   * Keeps only the blue of an image.
+   */
   public void keepOnlyBlue(){
       Pixel[][] pixels = this.getPixels2D();
       for (Pixel[] rowArray : pixels)
@@ -241,6 +242,9 @@ public class Picture extends SimplePicture
       }
   }
   
+  /**
+   * Negates every pixel in the image.
+   */
   public void negate(){
       Pixel[][] pixels = this.getPixels2D();
       for (Pixel[] rowArray : pixels)
@@ -254,6 +258,9 @@ public class Picture extends SimplePicture
       }
   }
   
+  /**
+   * Grayscales an image.
+   */
   public void grayscale(){
       Pixel[][] pixels = this.getPixels2D();
       for (Pixel[] rowArray : pixels)
@@ -267,4 +274,197 @@ public class Picture extends SimplePicture
         }
       }
   }
+  
+  /**
+   * Mirrors the right half of an image onto the left.
+   */
+  public void mirrorVerticalRightToLeft()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < width / 2; col++)
+      {
+        leftPixel = pixels[row][width - 1 - col];
+        rightPixel = pixels[row][col]; 
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    } 
+  }
+  
+  /**
+   * Mirrors and image horizontally.
+   */
+  public void mirrorHorizontal(){
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel topPixel = null;
+      Pixel bottomPixel = null;
+      int height = pixels.length;
+      int width = pixels[0].length;
+      for (int row = 0; row < pixels.length; row++)
+      {
+        for (int col = 0; col < width; col++)
+        {
+          topPixel = pixels[row][col];
+          bottomPixel = pixels[pixels.length - 1 - row][col]; 
+          bottomPixel.setColor(topPixel.getColor());
+        }
+      } 
+  }
+  
+  /**
+   * Mirrors an image horizontally from bottom to top.
+   */
+  public void mirrorHorizontalBottomToTop(){
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel topPixel = null;
+      Pixel bottomPixel = null;
+      int height = pixels.length;
+      int width = pixels[0].length;
+      for (int row = 0; row < pixels.length; row++)
+      {
+        for (int col = 0; col < width; col++)
+        {
+          bottomPixel = pixels[row][col];
+          topPixel = pixels[pixels.length - 1 - row][col]; 
+          bottomPixel.setColor(topPixel.getColor());
+        }
+      }
+  }
+  
+  /**
+   * Copies an image into another image.
+   * @param fromPic   The image being copied.
+   * @param startRow  The row to start on in the destination image.
+   * @param startCol  The column to start on in the destination image.
+   * @param endRow    The row to end on in the destination image.
+   * @param endColumn The column to end on in the destination image.
+   */
+  public void copy(Picture fromPic, int startRow, int startCol, int endRow, int endColumn)
+    {
+        Pixel fromPixel = null;
+        Pixel toPixel = null;
+        Pixel[][] toPixels = this.getPixels2D();
+        Pixel[][] fromPixels = fromPic.getPixels2D();
+        for (int fromRow = 0, toRow = startRow; fromRow < fromPixels.length && toRow < endRow; fromRow++, toRow++)
+        {
+            for (int fromCol = 0, toCol = startCol; fromCol < fromPixels[0].length && toCol < endColumn;  fromCol++, toCol++)
+            {
+                 fromPixel = fromPixels[fromRow][fromCol];
+                 toPixel = toPixels[toRow][toCol];
+                 toPixel.setColor(fromPixel.getColor());
+            }
+        }   
+    }
+  
+  /**
+   * Creates a collage. Does nothing interesting.
+   */
+  public void myCollage(){
+      Picture caterpillar = new Picture("caterpillar.jpg");
+      Picture flower1 = new Picture("flower1.jpg");
+      Picture water = new Picture("water.jpg");
+      water.zeroBlue();
+      this.copy(flower1, 0, 0);
+      this.copy(water, 300, 80, 400, 120);
+      this.copy(caterpillar, 500, 400, 629, 500);
+      this.mirrorVertical();
+  }
+  
+  /**
+   * Detects where an edge is and turns the pixel to black.
+   * @param edgeDist The color distance to consider and edge.
+   */
+  public void superEdgeDetection(int edgeDist)
+  {
+    // NOTE: No extra loops were added, as the edge detection starts hitting on itself which is bad.
+    Pixel belowPixel = null;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    Color rightColor = null;
+    int row = 0;
+    int col = 0;
+    
+    for (row = 0; row < pixels.length-1; row++)
+    {
+      for (col = 0; col < pixels[0].length-1; col++)
+      {
+        belowPixel = pixels[row+1][col];
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][col+1];
+        rightColor = rightPixel.getColor();
+        if (leftPixel.colorDistance(rightColor) > edgeDist || leftPixel.colorDistance(belowPixel.getColor()) > edgeDist){
+          leftPixel.setColor(Color.BLACK);
+        } else {
+          leftPixel.setColor(Color.WHITE);
+        }
+      }
+    }
+  }
+  
+  /**
+   * Removes all red in the image.
+   */
+  public void zeroRed()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+      }
+    }
+  }
+  
+  /**
+   * Removes all green in the image.
+   */
+  public void zeroGreen()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(0);
+      }
+    }
+  }
+  
+  /**
+   * Removes all but red in the image.
+   */
+  public void keepOnlyRed(){
+      Pixel[][] pixels = this.getPixels2D();
+      for (Pixel[] rowArray : pixels)
+      {
+        for (Pixel pixelObj : rowArray)
+        {
+          pixelObj.setBlue(0);
+          pixelObj.setGreen(0);
+        }
+      }
+  }
+  
+  /**
+   * Removes all but green in the image.
+   */
+  public void keepOnlyGreen(){
+      Pixel[][] pixels = this.getPixels2D();
+      for (Pixel[] rowArray : pixels)
+      {
+        for (Pixel pixelObj : rowArray)
+        {
+          pixelObj.setRed(0);
+          pixelObj.setBlue(0);
+        }
+      }
+  }
+  
+  
 } // this } is the end of class Picture, put all new methods before this
