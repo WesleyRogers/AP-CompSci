@@ -16,7 +16,14 @@ import java.util.Arrays;
     
     Difficulties:
 */
-public class Method_Repo {
+
+/**
+ * A repo of methods I might find useful.
+ * @author Wesley Rogers
+ *
+ * @param <E> Used for many of the searchign and sorting methods. Can be just about anything.
+ */
+public class Method_Repo<E> {
 
     /**
      * Rounds the double num to places decimal places. Does not include trailing zeroes and returns a double.
@@ -60,40 +67,6 @@ public class Method_Repo {
     }
     
     /**
-     * Takes array a1 and array a2 and merges them together into array a3
-     * @param a1  The first Array
-     * @param a2  The second Array
-     * @return    The sorted and merged array.
-     */
-    public static int[] mergeArrays(int[] a1, int[] a2){
-        int arrayLength = a1.length + a2.length;
-        int[] a3 = new int[arrayLength - 1];
-        
-        //I probably could have done this without an if thinking back.
-        if (a1.length > a2.length){ //If the first array is larger than the second.
-            
-            for(int i=0; i < a1.length; i++){ //a3 = a1 takes its member limit with it, sadly.
-                a3[i] = a1[i]; //Take the first array and set its members to a1
-            }
-            for(int i = a1.length; i < arrayLength - 1; i++){ 
-                a3[i] = a2[(i - a1.length)]; //Append a2 to the end
-            }
-        } else {
-            for(int i=0; i < a2.length; i++){ 
-                a3[i] = a2[i]; //Take a2's members and put them in a3
-            }
-            for(int i = a2.length; i < arrayLength - 1; i++){
-                a3[i] = a1[(i - a2.length)]; //Append a1 to the end
-            }
-        }
-        
-        //Sort, then return.
-        Arrays.sort(a3);
-        return a3;
-        
-    }
-    
-    /**
      * Averages an array of integers.
      * @param array  The array to be averaged.
      * @return       The average of the array.
@@ -101,6 +74,21 @@ public class Method_Repo {
     public static double averageArray(int[] array){
         int sum = 0;
         for (int num : array){
+            sum += num;
+        }
+        double avg = sum / ((double) array.length);
+        return avg;
+        
+    }
+    
+    /**
+     * Averages an array of doubles.
+     * @param array  The array to be averaged.
+     * @return       The average of the array.
+     */
+    public static double averageArray(double[] array){
+        int sum = 0;
+        for (double num : array){
             sum += num;
         }
         double avg = sum / ((double) array.length);
@@ -173,25 +161,10 @@ public class Method_Repo {
      * @param i     An index being swapped.
      * @param k     An index being swapped.
      */
-    public static void swapArrayElements(int[] array, int i, int k){
+    public static void swapArrayElements(int[] array, int i, int k){ //This is here for legacy reasons.
         int temp = array[i];
         array[i] = array[k];
         array[k] = temp;
-    }
-    
-    /**
-     * Determines if an element is already within an array
-     * @param array The array to be searched.
-     * @param e     Teh element to be looked for.
-     * @return      True if the element is found, false otherwise.
-     */
-    public static boolean isMemberInArray(int[] array, int e){
-        for(int i = 0; i<array.length-1; i++){
-            if (array[i] == e){
-                return true;
-            }
-        }
-        return false;
     }
     
     /**
@@ -226,21 +199,6 @@ public class Method_Repo {
             }
         }
         return out.toArray(new Integer[out.size()]);
-    }
-    
-    /**
-     * Determines where a number appears in an array.
-     * @param array
-     * @param e
-     * @return
-     */
-    public static int whereMemberInArray(int[] array, int e){
-        for(int i = 0; i<array.length-1; i++){
-            if (array[i] == e){
-                return i;
-            }
-        }
-        return -1;
     }
     
     /**
@@ -331,5 +289,130 @@ public class Method_Repo {
                 }
             }
         }
+    }
+    
+    /**
+     * Removes elements at the positions given.
+     * @param l   The Arraylist to remove things from.
+     * @param pos The positions to remove from the CURRENT arraylist.
+     * @return    The removed elements.
+     */
+    public ArrayList<E> removeFromPositions(ArrayList<E> l, int... pos){
+        ArrayList<E> removed = new ArrayList<E>();
+        Arrays.sort(pos);
+        int numRemoved = 0;
+        for(int i : pos){
+            removed.add(l.remove(i - numRemoved));
+            numRemoved++;
+        }
+        
+        return removed;
+    }
+    
+    /**
+     * Shufles array b.
+     * @param b An array to be shuffled.
+     */
+    public void shuffleArray(E[] b){
+        for(int i = 0; i < (int)(1.5*b.length); i++){
+            swapArrayElements(b, ((int) (Math.random()*b.length)), (int) (Math.random()*b.length));
+        }
+    }
+    
+    /**
+     * Swaps an array's elements.
+     * @param array
+     * @param i
+     * @param k
+     */
+    public void swapArrayElements(E[] array, int i, int k){
+        E temp = array[i];
+        array[i] = array[k];
+        array[k] = temp;
+    }
+    
+    /**
+     * Counts the number of matches within an array.
+     * @param list The ArrayList to be checked.
+     * @param e    The object to be looked for.
+     * @return     The total number of objects in the array.
+     */
+    public int countNumberInArray(ArrayList<E> list, E e){
+        @SuppressWarnings("unchecked") //Yes, this is required. Generics can not have a new array defined.
+        E[] array = list.toArray((E[])new Object[list.size()]);
+        int num = 0;
+        for(int i = 0; i<array.length-1; i++){
+            if (array[i].equals(e)){
+                num++;
+            }
+        }
+        return num;
+    }
+    
+    /**
+     * Takes array a1 and array a2 and merges them together into array a3
+     * @param a1  The first Array
+     * @param a2  The second Array
+     * @return    The sorted and merged array.
+     */
+    @SuppressWarnings("unchecked")
+    public E[] mergeArrays(E[] a1, E[] a2){
+        int arrayLength = a1.length + a2.length;
+        E[] a3 = (E[])new Object[arrayLength - 1];
+        
+        //I probably could have done this without an if thinking back.
+        if (a1.length > a2.length){ //If the first array is larger than the second.
+            
+            for(int i=0; i < a1.length; i++){ //a3 = a1 takes its member limit with it, sadly.
+                a3[i] = a1[i]; //Take the first array and set its members to a1
+            }
+            for(int i = a1.length; i < arrayLength - 1; i++){ 
+                a3[i] = a2[(i - a1.length)]; //Append a2 to the end
+            }
+        } else {
+            for(int i=0; i < a2.length; i++){ 
+                a3[i] = a2[i]; //Take a2's members and put them in a3
+            }
+            for(int i = a2.length; i < arrayLength - 1; i++){
+                a3[i] = a1[(i - a2.length)]; //Append a1 to the end
+            }
+        }
+        
+        //Sort, then return.
+        Arrays.sort(a3);
+        return a3;
+        
+    }
+    
+    
+    /**
+     * Determines if an element is already within an array
+     * @param array The array to be searched.
+     * @param e     Teh element to be looked for.
+     * @return      True if the element is found, false otherwise.
+     */
+    public boolean isMemberInArray(E[] array, E e){
+        for(int i = 0; i<array.length-1; i++){
+            if (array[i].equals(e)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    /**
+     * Determines where an object appears in an array.
+     * @param array
+     * @param e
+     * @return
+     */
+    public int whereMemberInArray(E[] array, E e){
+        for(int i = 0; i<array.length-1; i++){
+            if (array[i].equals(e)){
+                return i;
+            }
+        }
+        return -1;
     }
 }
