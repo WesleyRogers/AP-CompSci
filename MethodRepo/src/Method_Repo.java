@@ -21,7 +21,7 @@ import java.util.Arrays;
  * A repo of methods I might find useful.
  * @author Wesley Rogers
  *
- * @param <E> Used for many of the searchign and sorting methods. Can be just about anything.
+ * @param <E> Used for many of the searching and sorting methods. Can be just about anything.
  */
 public class Method_Repo<E> {
 
