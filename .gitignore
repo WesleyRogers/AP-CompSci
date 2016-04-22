@@ -19,6 +19,8 @@ local.properties
 *.css
 *.gif
 *.GIF
+*.png
+*package-list*
 
 # Eclipse Core
 .project
